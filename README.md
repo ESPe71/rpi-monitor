@@ -20,11 +20,11 @@ You can determine the address of the i2c wire interface with the following comma
 
 ### Wiring the OLED to the Rasperry Pi
 
-OLED  Pi
-Gnd   Gnd
-VCC   3.3V
-SDA   SDA (Pin 3)
-SCL   SCL (Pin 5)
+OLED  Pi  
+Gnd   Gnd  
+VCC   3.3V  
+SDA   SDA (Pin 3)  
+SCL   SCL (Pin 5)  
 
 ## Setup
 
