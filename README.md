@@ -20,11 +20,13 @@ You can determine the address of the i2c wire interface with the following comma
 
 ### Wiring the OLED to the Rasperry Pi
 
+```
 OLED  Pi  
 Gnd   Gnd  
 VCC   3.3V  
 SDA   SDA (Pin 3)  
 SCL   SCL (Pin 5)  
+```
 
 ## Setup
 
@@ -42,5 +44,11 @@ Add in ``/etc/rc.local`` the following line:
 ```
 sudo python3 /home/pi/rpi-monitor/stats.py &
 ```
+
+
+## References
+
+- https://learn.adafruit.com/adafruit-pioled-128x32-mini-oled-for-raspberry-pi/usage
+- https://indibit.de/raspberry-pi-oled-display-128x64-mit-python-ansteuern-i2c/
 
 

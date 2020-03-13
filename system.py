@@ -33,4 +33,5 @@ def drawPage(duration):
     y = display.drawHeader(15, getIP())
     display.drawEntries((getCpuLoad(), getMemUsage(), getDiskUsage(), getCpuTemp()), y, 12, 2)
     display.show()
+    time.sleep(0.250)
   return
