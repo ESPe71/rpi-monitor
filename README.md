@@ -2,6 +2,7 @@
 
 Monitoring an Raspberry Pi with an OLED
 
+You can buy an OLED for example on [Amazon](https://amzn.to/2MeAtls).
 ## Requirements
 
 Make sure the I2C-Interface is activated.  
