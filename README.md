@@ -51,7 +51,7 @@ sudo python3 /home/pi/rpi-monitor/stats.py &
 
 First have a look in /boot/overlays/README. Here you can look for Name i2c1, i2c2, i2c3, i2c4, i2c5 or i2c6.
 
-In the ``/boot/config.txt`` add an entry for you choosen i2c-Bus.
+In the ``/boot/config.txt`` add an entry for your choosen i2c-Bus.
 
 ```
 #Name:   i2c4
@@ -72,6 +72,15 @@ Now wire your display as follows (here e.g. for bus 4):
 |SDA  | GPIO 8 (Pin 24)
 |SCL  | GPIO 9 (Pin 21)
 
+Reboot your pi and test the i2c-bus (e.g. bus 4):
+```
+i2cdetect -y 4
+```
+
+You need to install adafruit-extended-bus
+```
+sudo pip3 install adafruit-extended-bus
+```
 In your python-script change the creation of the I2C as follows:
 
 ```
@@ -92,5 +101,7 @@ DISPLAY        = adafruit_ssd1306.SSD1306_I2C(DISPLAY_WIDTH, DISPLAY_HEIGHT, I2C
 
 - https://learn.adafruit.com/adafruit-pioled-128x32-mini-oled-for-raspberry-pi/usage
 - https://indibit.de/raspberry-pi-oled-display-128x64-mit-python-ansteuern-i2c/
+- https://circuitpython.readthedocs.io/projects/extended_bus/en/latest/
+- https://keytosmart.com/single-board-computers/raspberry-pi-4-gpio-pinout/
 
 
