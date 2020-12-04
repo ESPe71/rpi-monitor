@@ -22,7 +22,7 @@ You can determine the address of the i2c wire interface with the following comma
 ### Wiring the OLED to the Rasperry Pi
 
 
-|OLED | Pi  
+|OLED | Pi
 |-----|-----------
 |Gnd  | Gnd  
 |VCC  | 3.3V  
@@ -47,6 +47,46 @@ Add in ``/etc/rc.local`` the following line:
 sudo python3 /home/pi/rpi-monitor/stats.py &
 ```
 
+## Using another I2C-Bus as Bus 1 on Raspberry Pi 4
+
+First have a look in /boot/overlays/README. Here you can look for Name i2c1, i2c2, i2c3, i2c4, i2c5 or i2c6.
+
+In the ``/boot/config.txt`` add an entry for you choosen i2c-Bus.
+
+```
+#Name:   i2c4
+#Info:   Enable the i2c4 bus. BCM2711 only.
+#Load:   dtoverlay=i2c4,<param>
+#Params: pins_6_7                Use GPIOs 6 and 7
+#        pins_8_9                Use GPIOs 8 and 9 (default)
+#        baudrate                Set the baudrate for the interface (default
+#                                "100000")
+dtoverlay=i2c4,pins_8_9
+```
+Now wire your display as follows (here e.g. for bus 4):
+
+|OLED | Pi
+|-----|-----------
+|Gnd  | Gnd
+|VCC  | 3.3V
+|SDA  | GPIO 8 (Pin 24)
+|SCL  | GPIO 9 (Pin 21)
+
+In your python-script change the creation of the I2C as follows:
+
+```
+import adafruit_ssd1306
+from adafruit_extended_bus import ExtendedI2C as i2c
+
+DISPLAY_WIDTH  = 128
+DISPLAY_HEIGHT = 64
+
+...
+...
+
+I2C            = i2c(4)
+DISPLAY        = adafruit_ssd1306.SSD1306_I2C(DISPLAY_WIDTH, DISPLAY_HEIGHT, I2C)
+```
 
 ## References
 

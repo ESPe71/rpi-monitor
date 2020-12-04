@@ -1,7 +1,5 @@
-
-from board import SCL, SDA
-import busio
 import adafruit_ssd1306
+from adafruit_extended_bus import ExtendedI2C as i2c
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -10,7 +8,7 @@ DISPLAY_HEIGHT = 64
 
 IMAGE          = Image.new('1', (DISPLAY_WIDTH, DISPLAY_HEIGHT))
 DRAW           = ImageDraw.Draw(IMAGE)
-I2C            = busio.I2C(SCL, SDA)
+I2C            = i2c(4)
 DISPLAY        = adafruit_ssd1306.SSD1306_I2C(DISPLAY_WIDTH, DISPLAY_HEIGHT, I2C)
 
 fonts = {}
